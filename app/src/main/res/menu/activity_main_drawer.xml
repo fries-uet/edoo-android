@@ -1,36 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
-
-    <item android:title="Communicate">
+    <item android:title="@string/txt_class">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_lopMonHoc"
+                    android:icon="@mipmap/ic_subject"
+                    android:title="@string/txt_subject_class" />
+            </group>
         </menu>
     </item>
 
+    <item android:title="@string/txt_utilities">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_thoikhoabieu"
+                    android:icon="@mipmap/ic_time_table"
+                    android:title="@string/txt_time_table" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/txt_account">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_updateAccount"
+                    android:checkable="false"
+                    android:icon="@mipmap/ic_user"
+                    android:title="@string/txt_update_account" />
+                <item
+                    android:id="@+id/nav_share"
+                    android:checkable="false"
+                    android:icon="@android:drawable/ic_menu_share"
+                    android:title="@string/txt_share" />
+                <item
+                    android:id="@+id/nav_introduction"
+                    android:checkable="false"
+                    android:icon="@android:drawable/ic_menu_info_details"
+                    android:title="@string/introduction" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@mipmap/ic_logout"
+                    android:title="@string/txt_logout" />
+            </group>
+        </menu>
+    </item>
 </menu>
