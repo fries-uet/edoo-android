@@ -1,8 +1,83 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="header_profile_height">200dp</dimen>
+    <dimen name="avatar_size">96dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="cell_margin">0.5dp</dimen>
+    <dimen name="cell_radius_bg">5dp</dimen>
+
+    <dimen name="description">12sp</dimen>
+    <dimen name="height_item_subject">50dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="ic_post_size">18dp</dimen>
+    <dimen name="like_size">12sp</dimen>
+    <dimen name="ic_comment_post">12dp</dimen>
+
+    <dimen name="text_size_big">20sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_tiny">12sp</dimen>
+    <dimen name="text_size_tiny_tiny">10sp</dimen>
+    <dimen name="dialog_padding_around_content">24dp</dimen>
+    <dimen name="action_padding">8dp</dimen>
+    <dimen name="card_padding">4dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="text_title">24sp</dimen>
+
+
+    <dimen name="paragraph_margin">10dp</dimen>
+    <dimen name="line_text_margin">8dp</dimen>
+    <dimen name="i_class_padding_top">12dp</dimen>
+    <dimen name="i_class_padding_bottom">8dp</dimen>
+    <dimen name="i_class_padding_bottom_small">6dp</dimen>
+    <dimen name="i_class_padding_left">30dp</dimen>
+    <dimen name="i_block_margin_top">14dp</dimen>
+    <dimen name="i_icon_size">20dp</dimen>
+    <dimen name="i_icon_size_big">24dp</dimen>
+    <dimen name="i_icon_size_bigger">26dp</dimen>
+    <dimen name="i_icon_size_large">36dp</dimen>
+    <dimen name="i_icon_size_small">18dp</dimen>
+    <dimen name="lv_margin_top">8dp</dimen>
+    <dimen name="i_height">72dp</dimen>
+
+    <!--Font text size Material-->
+    <dimen name="t_size_display_1">34sp</dimen>
+    <dimen name="t_size_headline">24sp</dimen>
+    <dimen name="t_size_title">20sp</dimen>
+    <dimen name="t_size_subheading_2">18sp</dimen>
+    <dimen name="t_size_subheading">16sp</dimen>
+    <dimen name="t_size_body_1">15sp</dimen>
+    <dimen name="t_size_body">14sp</dimen>
+    <dimen name="t_size_caption">12sp</dimen>
+    <dimen name="t_size_small">12sp</dimen>
+    <dimen name="t_size_tiny">10sp</dimen>
+
+    <dimen name="t_size_button">14sp</dimen>
+    <dimen name="i_avatar_size">42dp</dimen>
+    <dimen name="btn_height">32dp</dimen>
+    <dimen name="btn_dialog_height">36dp</dimen>
+    <dimen name="dialog_margin_icon">20dp</dimen>
+
+
+    <!--Movement-->
+    <integer name="move_large_layout">375</integer>
+    <integer name="move_object_enter_layout">225</integer>
+    <integer name="move_object_leave_layout">195</integer>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="margin_item_timetable">10dp</dimen>
+    <dimen name="d_height">45dp</dimen>
+
+    <!--IntroSlide-->
+    <dimen name="img_width_height">120dp</dimen>
+    <dimen name="desc_padding">40dp</dimen>
+    <dimen name="slide_desc">16dp</dimen>
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="dots_margin_bottom">20dp</dimen>
+
 </resources>
