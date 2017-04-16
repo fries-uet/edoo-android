@@ -89,7 +89,6 @@ public class LoginActivity extends Activity {
                 PrefManager.setTokenLogin(itemLogin.getToken());
                 PrefManager.setLogin(true);
 
-                // Todo: Add User into Database
                 DaoSession daoSession = ((AppController)getApplication()).getDaoSession();
                 UserDao userDao = daoSession.getUserDao();
                 userDao.insert(itemLogin.getUser());

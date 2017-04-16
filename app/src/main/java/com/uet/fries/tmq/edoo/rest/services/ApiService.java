@@ -26,6 +26,9 @@ public interface ApiService {
     @GET("logout")
     Call<ItemResponse> logout(@Header("Authorization") String token);
 
+    @GET("timetable")
+    Call<List<ItemClass>> listSubjects(@Header("Authorization") String token);
+
     @GET("classes")
     Call<List<ItemClass>> listClasses(@Header("Authorization") String token);
 
