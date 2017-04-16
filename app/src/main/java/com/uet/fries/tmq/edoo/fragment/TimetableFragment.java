@@ -31,9 +31,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by TMQ on 20-Nov-15.
- */
 public class TimetableFragment extends Fragment {
     private static final String TAG = TimetableFragment.class.getSimpleName();
     private static final int TT_WIDTH = 6;
@@ -149,7 +146,6 @@ public class TimetableFragment extends Fragment {
 
     private void setDataForTimeTable() {
         convertSubjectToTable();
-        Log.i(TAG, "convert");
         TypedArray bgCell = getResources().obtainTypedArray(R.array.arr_bg_cell_background);
         TypedArray bgItem = getResources().obtainTypedArray(R.array.arr_background_item);
         for (int i = 0; i < 6; i++) {
@@ -238,9 +234,7 @@ public class TimetableFragment extends Fragment {
                 if (y >= 5) y++;
 
                 listSubjectInTable[x][y] = i;
-                System.out.print(listSubjectInTable[x][y] + ", ");
             }
-            System.out.println();
         }
     }
 

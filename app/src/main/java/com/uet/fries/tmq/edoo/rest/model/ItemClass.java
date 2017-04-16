@@ -46,4 +46,36 @@ public class ItemClass {
         if (lessons == null) return new ArrayList<>();
         return lessons;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public String getCredit_count() {
+        return credit_count;
+    }
+
+    public String getStudent_count() {
+        return student_count;
+    }
+
+    public String getTeacher_name() {
+        return teacher_name;
+    }
 }

@@ -4,8 +4,6 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -22,14 +20,17 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.uet.fries.tmq.edoo.R;
 import com.uet.fries.tmq.edoo.app.AppController;
+import com.uet.fries.tmq.edoo.fragment.SubjectClassFragment;
 import com.uet.fries.tmq.edoo.fragment.TimetableFragment;
 import com.uet.fries.tmq.edoo.helper.PrefManager;
 import com.uet.fries.tmq.edoo.helper.dao.DaoSession;
 import com.uet.fries.tmq.edoo.helper.dao.User;
 import com.uet.fries.tmq.edoo.helper.dao.UserDao;
 import com.uet.fries.tmq.edoo.rest.RestClient;
+import com.uet.fries.tmq.edoo.rest.model.ItemClass;
 import com.uet.fries.tmq.edoo.rest.model.ItemResponse;
 
+import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,12 +48,16 @@ public class MainActivity extends AppCompatActivity
     private View header;
 
     private TimetableFragment timetableFragment = new TimetableFragment();
+    private SubjectClassFragment subjectClassFragment = new SubjectClassFragment();
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -124,6 +129,16 @@ public class MainActivity extends AppCompatActivity
         getFragmentManager().beginTransaction().replace(R.id.container, lopFragment).commit();
     }
 
+    public void goToTimeLine(ItemClass itemLop, String keyLop) {
+//        Intent mIntent = new Intent(this, TimelineActivity.class);
+//        Bundle b = new Bundle();
+//        b.putSerializable("item_class", itemLop);
+//
+//        mIntent.putExtras(b);
+//        startActivity(mIntent);
+
+    }
+
     private long prevTime = 0;
     @Override
     public void onBackPressed() {
@@ -144,7 +159,22 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        switch (currentMenuInt) {
+            case LOP_MENU_INT:
+                getMenuInflater().inflate(R.menu.main, menu);
+                break;
+            case TIMELINE_MENU_INT:
+                getMenuInflater().inflate(R.menu.timeline_menu, menu);
+                menu.findItem(R.id.item_post).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                menu.findItem(R.id.item_post).setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                break;
+            case POST_DETAIL_MENU_INT:
+                getMenuInflater().inflate(R.menu.writepost_menu, menu);
+                break;
+            default:
+                break;
+        }
+
         return true;
     }
 
@@ -163,12 +193,27 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    public static final int LOP_MENU_INT = 1;
+    public static final int TIMELINE_MENU_INT = 2;
+    public static final int POST_DETAIL_MENU_INT = 3;
+
+    private static int currentMenuInt = LOP_MENU_INT;
+
+    private void switchToMenu(int menuInt) {
+        currentMenuInt = menuInt;
+
+        supportInvalidateOptionsMenu();
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.nav_lopMonHoc:
+                switchToMenu(LOP_MENU_INT);
+                toolbar.setTitle("Lớp môn học");
+                showFragment(subjectClassFragment);
                 break;
             case R.id.nav_introduction:
                 break;
@@ -181,6 +226,8 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_thoikhoabieu:
                 showFragment(timetableFragment);
+                switchToMenu(LOP_MENU_INT);
+                toolbar.setTitle("Thời khoá biểu");
                 break;
             case R.id.nav_updateAccount:
                 break;
