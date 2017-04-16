@@ -1,4 +1,4 @@
-package com.uet.fries.tmq.edoo.util;
+package com.uet.fries.tmq.edoo.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -63,12 +63,12 @@ public class PrefManager {
 
     // ---------------------------------------------------------------------------------------------
 
-    public static void setIsSaveClass(boolean isSave) {
-        editor.putBoolean(KEY_IS_SAVE_CLASS, isSave);
-        editor.commit();
-    }
-
-    public static boolean isSaveClass() {
-        return pref.getBoolean(KEY_IS_SAVE_CLASS, false);
-    }
+//    public static void setIsSaveClass(boolean isSave) {
+//        editor.putBoolean(KEY_IS_SAVE_CLASS, isSave);
+//        editor.commit();
+//    }
+//
+//    public static boolean isSaveClass() {
+//        return pref.getBoolean(KEY_IS_SAVE_CLASS, false);
+//    }
 }

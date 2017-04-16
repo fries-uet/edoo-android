@@ -5,19 +5,19 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
 import com.uet.fries.tmq.edoo.R;
+import com.uet.fries.tmq.edoo.app.AppController;
+import com.uet.fries.tmq.edoo.helper.dao.DaoSession;
+import com.uet.fries.tmq.edoo.helper.dao.UserDao;
 import com.uet.fries.tmq.edoo.rest.RestClient;
-import com.uet.fries.tmq.edoo.rest.models.ItemLogin;
+import com.uet.fries.tmq.edoo.rest.model.ItemLogin;
 import com.uet.fries.tmq.edoo.util.CommonVLs;
-import com.uet.fries.tmq.edoo.util.PrefManager;
+import com.uet.fries.tmq.edoo.helper.PrefManager;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,7 +80,7 @@ public class LoginActivity extends Activity {
         pDialog.setMessage("Đăng nhập ...");
         pDialog.show();
 
-        RestClient restClient = new RestClient(this, "_");
+        RestClient restClient = new RestClient(this, null);
         restClient.getApiService().login(email, password).enqueue(new Callback<ItemLogin>() {
             @Override
             public void onResponse(Call<ItemLogin> call, Response<ItemLogin> response) {
@@ -90,7 +90,9 @@ public class LoginActivity extends Activity {
                 PrefManager.setLogin(true);
 
                 // Todo: Add User into Database
-//                db.addUser(name, email, uid, "", lop, mssv, type, ava);
+                DaoSession daoSession = ((AppController)getApplication()).getDaoSession();
+                UserDao userDao = daoSession.getUserDao();
+                userDao.insert(itemLogin.getUser());
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);

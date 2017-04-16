@@ -1,6 +1,6 @@
-package com.uet.fries.tmq.edoo.rest.models;
+package com.uet.fries.tmq.edoo.rest.model;
 
-import com.uet.fries.tmq.edoo.model.ItemUser;
+import com.uet.fries.tmq.edoo.helper.dao.User;
 
 /**
  * Created by tmq on 16/04/2017.
@@ -9,7 +9,7 @@ import com.uet.fries.tmq.edoo.model.ItemUser;
 public class ItemLogin {
 
     private String token;
-    private ItemUser user;
+    private User user;
 
     public String getToken() {
         return token;
@@ -19,11 +19,11 @@ public class ItemLogin {
         this.token = token;
     }
 
-    public ItemUser getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(ItemUser user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

@@ -1,4 +1,4 @@
-package com.uet.fries.tmq.edoo.rest.models;
+package com.uet.fries.tmq.edoo.rest.model;
 
 import android.util.Log;
 
@@ -42,7 +42,7 @@ public class ItemTypeAdapterFactory implements TypeAdapterFactory {
                 JsonElement jsonElement = elementAdapter.read(in);
                 if (jsonElement.isJsonObject()) {
                     JsonObject jsonObject = jsonElement.getAsJsonObject();
-                    if (jsonObject.has("data") && jsonObject.get("data").isJsonObject()) {
+                    if (jsonObject.has("data") && !jsonObject.get("data").isJsonNull()) {
                         jsonElement = jsonObject.get("data");
                         Log.i(TAG, jsonElement.toString());
                         JsonObject jsonData = jsonElement.getAsJsonObject();

@@ -1,7 +1,8 @@
 package com.uet.fries.tmq.edoo.rest.services;
 
-import com.uet.fries.tmq.edoo.rest.models.ItemClass;
-import com.uet.fries.tmq.edoo.rest.models.ItemLogin;
+import com.uet.fries.tmq.edoo.rest.model.ItemClass;
+import com.uet.fries.tmq.edoo.rest.model.ItemLogin;
+import com.uet.fries.tmq.edoo.rest.model.ItemResponse;
 
 import java.util.List;
 
@@ -21,6 +22,9 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("login")
     Call<ItemLogin> login(@Field("email") String email, @Field("password") String password);
+
+    @GET("logout")
+    Call<ItemResponse> logout(@Header("Authorization") String token);
 
     @GET("classes")
     Call<List<ItemClass>> listClasses(@Header("Authorization") String token);

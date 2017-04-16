@@ -1,4 +1,4 @@
-package com.uet.fries.tmq.edoo.rest.models;
+package com.uet.fries.tmq.edoo.rest.model;
 
 import com.google.gson.annotations.SerializedName;
 

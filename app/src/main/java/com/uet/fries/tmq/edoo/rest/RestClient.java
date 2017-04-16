@@ -1,12 +1,10 @@
 package com.uet.fries.tmq.edoo.rest;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.uet.fries.tmq.edoo.rest.models.ItemTypeAdapterFactory;
+import com.uet.fries.tmq.edoo.rest.model.ItemTypeAdapterFactory;
 import com.uet.fries.tmq.edoo.rest.services.ApiService;
 
 import okhttp3.OkHttpClient;
@@ -26,6 +24,7 @@ public class RestClient {
 
     public RestClient(Context context, String field) {
         this.mContext = context;
+        if (field == null || field.isEmpty()) field = "_";
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
