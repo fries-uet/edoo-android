@@ -5,21 +5,26 @@ import android.support.multidex.MultiDexApplication;
 import com.uet.fries.tmq.edoo.util.PrefManager;
 
 public class AppController extends MultiDexApplication {
-	public static final String TAG = AppController.class.getSimpleName();
+    public static final String TAG = AppController.class.getSimpleName();
 
-	private static AppController mInstance;
+    private static AppController mInstance;
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
+    @Override
+    public void onCreate() {
+        super.onCreate();
 
-		mInstance = this;
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            return;
+//        }
+//        LeakCanary.install(this);
 
-		new PrefManager(this);
-	}
+        mInstance = this;
 
-	public static synchronized AppController getInstance() {
-		return mInstance;
-	}
+        new PrefManager(this);
+    }
+
+    public static synchronized AppController getInstance() {
+        return mInstance;
+    }
 
 }

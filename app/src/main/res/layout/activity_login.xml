@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/bg_login"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical"
@@ -16,7 +16,6 @@
         android:paddingRight="20dp">
 
         <ImageView
-            android:id="@+id/imageView3"
             android:layout_width="129dp"
             android:layout_height="133dp"
             android:layout_gravity="center_horizontal"
@@ -24,8 +23,8 @@
             android:src="@mipmap/ic_logo" />
 
         <EditText
-            android:id="@+id/email"
-            android:layout_width="fill_parent"
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
@@ -38,8 +37,8 @@
             android:textColorHint="@color/input_login_hint" />
 
         <EditText
-            android:id="@+id/password"
-            android:layout_width="fill_parent"
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:background="@color/white"
@@ -53,8 +52,8 @@
 
 
         <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="fill_parent"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
             android:background="@color/btn_login_bg"
@@ -77,15 +76,15 @@
 
 
         <Button
-            android:id="@+id/btnLinkToRegisterScreen"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dialog_margin_icon"
             android:background="@null"
             android:text="@string/btn_link_to_register"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/t_size_button" />
+            android:textSize="@dimen/t_size_button"
+            android:visibility="invisible" />
     </LinearLayout>
 
 </LinearLayout>
