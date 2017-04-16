@@ -1,6 +1,7 @@
 package com.uet.fries.tmq.edoo.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,8 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
 import com.uet.fries.tmq.edoo.R;
 import com.uet.fries.tmq.edoo.app.AppController;
 import com.uet.fries.tmq.edoo.helper.PrefManager;
@@ -25,6 +28,10 @@ import com.uet.fries.tmq.edoo.helper.dao.UserDao;
 import com.uet.fries.tmq.edoo.rest.RestClient;
 import com.uet.fries.tmq.edoo.rest.model.ItemResponse;
 
+import java.util.HashMap;
+
+import butterknife.BindView;
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +44,7 @@ public class MainActivity extends AppCompatActivity
     private static final String URL_DOWNLOAD_APK = "https://edoo.vn/";
 
     private User user;
-
+    private View header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +68,53 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        setupUserInfo();
+    }
+
+    private void setupUserInfo() {
+        if (!PrefManager.isLoggedIn()) {
+            logout();
+            return;
+        }
+
+        if (PrefManager.isFirstLoggedIn()){
+            // Todo: First Login -> IntroActivity
+        }
 
         DaoSession daoSession = ((AppController) getApplication()).getDaoSession();
         UserDao userDao = daoSession.getUserDao();
         user = userDao.loadAll().get(0);
         Log.i(TAG, "user = " + user.getName());
         daoSession.clear();
+
+        // Todo: replace fragment moi
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        header = navigationView.getHeaderView(0);
+
+        TextView tvName = (TextView) header.findViewById(R.id.tv_name);
+        TextView tvEmail = (TextView) header.findViewById(R.id.tv_email);
+        CircleImageView ivAvatar = (CircleImageView) header.findViewById(R.id.iv_avatar);
+
+        String capability = user.getCapability();
+        if (capability.equalsIgnoreCase("student")) {
+            capability = "Sinh viên";
+        } else if (capability.equalsIgnoreCase("teacher")) {
+            capability = "Giảng viên";
+        }
+        tvName.setText(user.getName() + " (" + capability + ")");
+        tvEmail.setText(user.getEmail());
+
+        ivAvatar.setFillColor(Color.WHITE);
+        String urlAvatar = user.getAvatar();
+        if (urlAvatar.isEmpty()) urlAvatar += "...";
+        Picasso.with(this).invalidate(urlAvatar);
+        Picasso.with(this)
+                .load(urlAvatar).fit()
+                .placeholder(R.drawable.ic_user)
+                .error(R.drawable.ic_user)
+                .into(ivAvatar);
     }
 
     @Override

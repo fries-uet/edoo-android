@@ -47,6 +47,8 @@ dependencies {
     // Todo: LeakCanary: https://github.com/square/leakcanary
 //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
 //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
 
 //Plugin for GreenDAO
