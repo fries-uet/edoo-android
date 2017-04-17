@@ -129,13 +129,13 @@ public class MainActivity extends AppCompatActivity
         getFragmentManager().beginTransaction().replace(R.id.container, lopFragment).commit();
     }
 
-    public void goToTimeLine(ItemClass itemLop, String keyLop) {
-//        Intent mIntent = new Intent(this, TimelineActivity.class);
-//        Bundle b = new Bundle();
-//        b.putSerializable("item_class", itemLop);
-//
-//        mIntent.putExtras(b);
-//        startActivity(mIntent);
+    public void goToTimeLine(ItemClass itemClass, String keyLop) {
+        Intent mIntent = new Intent(this, TimelineActivity.class);
+        Bundle b = new Bundle();
+        b.putSerializable("item_class", itemClass);
+
+        mIntent.putExtras(b);
+        startActivity(mIntent);
 
     }
 

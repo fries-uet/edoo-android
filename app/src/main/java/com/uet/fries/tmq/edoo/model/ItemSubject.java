@@ -7,9 +7,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-/**
- * Created by TMQ on 21-Nov-15.
- */
 public class ItemSubject {
     private static final String TAG = ItemSubject.class.getSimpleName();
 

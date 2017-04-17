@@ -1,8 +1,5 @@
 package com.uet.fries.tmq.edoo.model;
 
-/**
- * Created by tmq on 13/04/2016.
- */
 public class ItemUser {
 
     private String avatar;

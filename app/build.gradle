@@ -49,6 +49,9 @@ dependencies {
 //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Todo: remove volley
+    compile 'com.android.volley:volley:1.0.0'
 }
 
 //Plugin for GreenDAO

@@ -2,6 +2,7 @@ package com.uet.fries.tmq.edoo.rest.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by tmq on 12/04/2017.
  */
 
-public class ItemClass {
+public class ItemClass implements Serializable {
     @SerializedName("id")
     private String id;
 
@@ -37,6 +38,8 @@ public class ItemClass {
     @SerializedName("lessions")
     private List<ItemLesson> lessons;
 
+
+
     @Override
     public String toString() {
         return name;
@@ -47,6 +50,7 @@ public class ItemClass {
         return lessons;
     }
 
+    // Getter
     public String getId() {
         return id;
     }
@@ -77,5 +81,19 @@ public class ItemClass {
 
     public String getTeacher_name() {
         return teacher_name;
+    }
+
+    // Setter
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

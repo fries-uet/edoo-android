@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.uet.fries.tmq.edoo.R;
 import com.uet.fries.tmq.edoo.activity.LoginActivity;
+import com.uet.fries.tmq.edoo.activity.MainActivity;
 import com.uet.fries.tmq.edoo.helper.PrefManager;
 import com.uet.fries.tmq.edoo.rest.ErrorResponse;
 import com.uet.fries.tmq.edoo.rest.RestClient;
@@ -105,11 +106,12 @@ public class TimetableFragment extends Fragment {
         directToClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Todo
-//                MainActivity mainActivity = (MainActivity) mContext;
-//                ItemLop itemLop = new ItemLop(item.getName(), item.getClassId(), item.getCode(), item.getTeacherName(), item.getStudentCount());
-//                mainActivity.goToTimeLine(itemLop, LopFragment.KEY_LOP_MON_HOC);
-                Toast.makeText(mContext, "Go to LopFragment", Toast.LENGTH_SHORT).show();
+                MainActivity mainActivity = (MainActivity) mContext;
+                ItemClass itemClass = new ItemClass();
+                itemClass.setId(item.getClassId() + "");
+                itemClass.setName(item.getName());
+
+                mainActivity.goToTimeLine(itemClass, ClassFragment.KEY_LOP_MON_HOC);
                 dialogInfo.dismiss();
             }
         });

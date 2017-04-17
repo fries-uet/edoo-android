@@ -1,7 +1,11 @@
 package com.uet.fries.tmq.edoo.app;
 
 import android.support.multidex.MultiDexApplication;
+import android.text.TextUtils;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.uet.fries.tmq.edoo.helper.PrefManager;
 import com.uet.fries.tmq.edoo.helper.dao.DaoMaster;
 import com.uet.fries.tmq.edoo.helper.dao.DaoSession;
@@ -39,5 +43,22 @@ public class AppController extends MultiDexApplication {
 
     public DaoSession getDaoSession() {
         return daoSession;
+    }
+
+
+    // Todo: remove Queue
+    private RequestQueue mRequestQueue;
+
+    public RequestQueue getRequestQueue() {
+        if (mRequestQueue == null) {
+            mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+
+        return mRequestQueue;
+    }
+
+    public <T> void addToRequestQueue(Request<T> req, String tag) {
+        req.setTag(TextUtils.isEmpty(tag) ? TAG : tag);
+        getRequestQueue().add(req);
     }
 }

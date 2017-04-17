@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/paragraph_margin"
+    android:paddingTop="@dimen/i_class_padding_top">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingRight="@dimen/paragraph_margin">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_marker_seen"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="@dimen/lv_margin_top"
+            android:src="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/i_class_padding_bottom_small"
+            android:paddingLeft="6dp"
+            android:paddingTop="0dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/title_post"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/t_size_subheading_2"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_bookmark"
+                    android:layout_width="@dimen/i_icon_size"
+                    android:layout_height="@dimen/i_icon_size"
+                    android:layout_gravity="top|right"
+                    android:src="@drawable/ic_bookmark_post_teacher" />
+
+                <ImageView
+                    android:id="@+id/iv_type_post_list"
+                    android:layout_width="@dimen/i_icon_size"
+                    android:layout_height="@dimen/i_icon_size"
+                    android:src="@drawable/ic_type_post_question" />
+
+            </TableRow>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/i_class_padding_top"
+                android:layout_marginTop="@dimen/i_class_padding_bottom_small"
+                android:text="@string/content_post"
+                android:textColor="@color/black_87"
+                android:textSize="@dimen/t_size_body" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_marginTop="@dimen/i_block_margin_top"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/iv_like"
+                        android:layout_width="@dimen/i_icon_size_small"
+                        android:layout_height="@dimen/i_icon_size_small"
+                        android:src="@drawable/ic_vote_down" />
+
+                    <TextView
+                        android:id="@+id/txtCountLike"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11"
+                        android:textColor="@color/black_54"
+                        android:textSize="@dimen/t_size_body" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/paragraph_margin"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="@dimen/i_icon_size_small"
+                        android:layout_height="@dimen/i_icon_size_small"
+                        android:padding="2dp"
+                        android:src="@drawable/ic_comment" />
+
+                    <TextView
+                        android:id="@+id/txtCountComment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="27"
+                        android:textColor="@color/black_54"
+                        android:textSize="@dimen/t_size_body" />
+                </TableRow>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/action_padding"
+                    android:layout_marginRight="@dimen/i_icon_size"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:id="@+id/tv_name_postauthor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="start"
+                        android:maxLines="1"
+                        android:text="@string/author_name"
+                        android:textColor="@color/black_54"
+                        android:textSize="@dimen/t_size_body" />
+
+                    <TextView
+                        android:id="@+id/tv_time_post"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/time_post"
+                        android:textColor="@color/black_54"
+                        android:textSize="@dimen/t_size_body" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </TableRow>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:background="@color/hint" />
+
+</LinearLayout>
