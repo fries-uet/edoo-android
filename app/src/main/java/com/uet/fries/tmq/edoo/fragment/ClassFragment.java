@@ -14,6 +14,7 @@ import com.uet.fries.tmq.edoo.app.AppController;
 import com.uet.fries.tmq.edoo.helper.PrefManager;
 import com.uet.fries.tmq.edoo.helper.dao.DaoSession;
 import com.uet.fries.tmq.edoo.helper.dao.UserDao;
+import com.uet.fries.tmq.edoo.rest.ErrorResponse;
 import com.uet.fries.tmq.edoo.rest.RestClient;
 import com.uet.fries.tmq.edoo.rest.model.ItemClass;
 
@@ -55,14 +56,17 @@ public abstract class ClassFragment extends Fragment {
         requestServices.getApiService().listClasses(PrefManager.getTokenLogin()).enqueue(new Callback<List<ItemClass>>() {
             @Override
             public void onResponse(Call<List<ItemClass>> call, Response<List<ItemClass>> response) {
-                if (response.isSuccessful()) {
-                    itemArr.clear();
-                    itemArr.addAll(response.body());
-
-                    Message msg = new Message();
-                    msg.setTarget(mHandler);
-                    msg.sendToTarget();
+                if (!response.isSuccessful()) {
+                    ErrorResponse.handleError(response, mContext);
+                    return;
                 }
+
+                itemArr.clear();
+                itemArr.addAll(response.body());
+
+                Message msg = new Message();
+                msg.setTarget(mHandler);
+                msg.sendToTarget();
             }
 
             @Override

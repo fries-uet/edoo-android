@@ -5,19 +5,26 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
 import com.uet.fries.tmq.edoo.R;
 import com.uet.fries.tmq.edoo.app.AppController;
 import com.uet.fries.tmq.edoo.helper.dao.DaoSession;
 import com.uet.fries.tmq.edoo.helper.dao.UserDao;
+import com.uet.fries.tmq.edoo.rest.ErrorResponse;
 import com.uet.fries.tmq.edoo.rest.RestClient;
+import com.uet.fries.tmq.edoo.rest.model.ItemAbstract;
 import com.uet.fries.tmq.edoo.rest.model.ItemLogin;
+import com.uet.fries.tmq.edoo.rest.model.ItemResponse;
 import com.uet.fries.tmq.edoo.util.CommonVLs;
 import com.uet.fries.tmq.edoo.helper.PrefManager;
 
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
 
     private ProgressDialog pDialog;
@@ -84,13 +91,21 @@ public class LoginActivity extends Activity {
         restClient.getApiService().login(email, password).enqueue(new Callback<ItemLogin>() {
             @Override
             public void onResponse(Call<ItemLogin> call, Response<ItemLogin> response) {
-                ItemLogin itemLogin = response.body();
+                pDialog.dismiss();
 
+                if (!response.isSuccessful()) {
+                    ItemResponse itemResponse = ErrorResponse.getItemResponse(response);
+                    Toast.makeText(LoginActivity.this, itemResponse.getMessage() + "\nĐăng nhập sai", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                ItemLogin itemLogin = response.body();
                 PrefManager.setTokenLogin(itemLogin.getToken());
                 PrefManager.setLogin(true);
 
-                DaoSession daoSession = ((AppController)getApplication()).getDaoSession();
+                DaoSession daoSession = ((AppController) getApplication()).getDaoSession();
                 UserDao userDao = daoSession.getUserDao();
+                userDao.deleteAll();
                 userDao.insert(itemLogin.getUser());
 
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);

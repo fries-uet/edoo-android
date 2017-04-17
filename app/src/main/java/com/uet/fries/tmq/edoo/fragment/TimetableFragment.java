@@ -1,8 +1,10 @@
 package com.uet.fries.tmq.edoo.fragment;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uet.fries.tmq.edoo.R;
+import com.uet.fries.tmq.edoo.activity.LoginActivity;
 import com.uet.fries.tmq.edoo.helper.PrefManager;
+import com.uet.fries.tmq.edoo.rest.ErrorResponse;
 import com.uet.fries.tmq.edoo.rest.RestClient;
 import com.uet.fries.tmq.edoo.rest.model.ItemClass;
 import com.uet.fries.tmq.edoo.rest.model.ItemLesson;
@@ -122,6 +126,10 @@ public class TimetableFragment extends Fragment {
         restClient.getApiService().listSubjects(PrefManager.getTokenLogin()).enqueue(new Callback<List<ItemClass>>() {
             @Override
             public void onResponse(Call<List<ItemClass>> call, Response<List<ItemClass>> response) {
+                if (!response.isSuccessful()) {
+                    ErrorResponse.handleError(response, mContext);
+                    return;
+                }
                 List<ItemClass> list = response.body();
                 Toast.makeText(mContext, "size = " + list.size(), Toast.LENGTH_SHORT).show();
                 for (ItemClass itemClass : list) {
@@ -129,9 +137,6 @@ public class TimetableFragment extends Fragment {
                     for (ItemLesson lesson : lessons) {
                         listLessons.add(lesson);
                     }
-                }
-                for (ItemLesson lesson : listLessons) {
-                    Log.i(TAG, lesson.toString());
                 }
                 setDataForTimeTable();
             }

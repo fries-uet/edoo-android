@@ -17,6 +17,20 @@ public class ItemResponse {
     @SerializedName("statusCode")
     private String statusCode;
 
+    public ItemResponse() {
+        this.error = "";
+        this.message = "";
+        this.statusCode = "";
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
     @Override
     public String toString() {
         return message;
