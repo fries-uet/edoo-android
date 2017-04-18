@@ -52,6 +52,17 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".activity.PostDetailActivity"
+            android:label="@string/postDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity.WebviewActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

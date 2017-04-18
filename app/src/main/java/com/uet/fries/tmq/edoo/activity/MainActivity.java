@@ -29,6 +29,7 @@ import com.uet.fries.tmq.edoo.helper.dao.UserDao;
 import com.uet.fries.tmq.edoo.rest.RestClient;
 import com.uet.fries.tmq.edoo.rest.model.ItemClass;
 import com.uet.fries.tmq.edoo.rest.model.ItemResponse;
+import com.uet.fries.tmq.edoo.util.CommonVLs;
 
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;

@@ -250,12 +250,12 @@ public class TimelineActivity extends AppCompatActivity implements SwipeRefreshL
     private static final int REQUEST_CODE_POST_WRITER = 1202;
 
     public void startPostDetailActivity(ITimelineBase itemTimeLine) {
-//        Intent mIntent = new Intent();
-//        mIntent.putExtra("timelineItem", itemTimeLine);
-//        mIntent.putExtra("post_id", itemTimeLine.getIdPost());
-//        mIntent.setClass(this, PostDetailActivity.class);
-//
-//        startActivityForResult(mIntent, REQUEST_CODE_POST_DETAIL);
+        Intent mIntent = new Intent();
+        mIntent.putExtra("timelineItem", itemTimeLine);
+        mIntent.putExtra("post_id", itemTimeLine.getIdPost());
+        mIntent.setClass(this, PostDetailActivity.class);
+
+        startActivityForResult(mIntent, REQUEST_CODE_POST_DETAIL);
     }
 
     public void startPostWriterActivity(String idClass) {

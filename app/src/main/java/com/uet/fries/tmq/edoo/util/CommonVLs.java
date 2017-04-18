@@ -10,6 +10,8 @@ import android.support.v4.app.ActivityCompat;
 import android.text.format.DateFormat;
 import android.view.View;
 
+import com.uet.fries.tmq.edoo.helper.dao.User;
+
 import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
