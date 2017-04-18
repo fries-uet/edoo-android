@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.uet.fries.tmq.edoo.R;
+import com.uet.fries.tmq.edoo.activity.ListSubmittedActivity;
 import com.uet.fries.tmq.edoo.activity.PostDetailActivity;
 import com.uet.fries.tmq.edoo.activity.WebviewActivity;
 import com.uet.fries.tmq.edoo.model.ItemTimeLineExercise;
@@ -134,13 +135,12 @@ public class ItemEventDetailHolder extends AbstractHolder {
     }
 
     private void checkSubmitExercise() {
-        // Todo checkSubmitExercise
-//        Intent intent = new Intent(mContext, ListSubmittedActivity.class);
-//        intent.putExtra("post_id", itemTLExercise.getIdPost());
-////        String percent = itemTimeLine.getPercentSubmitted();
-////        Log.i(TAG, "percent=" + percent);
-////        intent.putExtra("student_count", percent.substring(percent.indexOf("/"), percent.length()));
-//        mContext.startActivity(intent);
+        Intent intent = new Intent(mContext, ListSubmittedActivity.class);
+        intent.putExtra("post_id", itemTLExercise.getIdPost());
+//        String percent = itemTimeLine.getPercentSubmitted();
+//        Log.i(TAG, "percent=" + percent);
+//        intent.putExtra("student_count", percent.substring(percent.indexOf("/"), percent.length()));
+        mContext.startActivity(intent);
     }
 
 
