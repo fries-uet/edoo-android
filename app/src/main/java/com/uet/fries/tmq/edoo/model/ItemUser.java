@@ -1,86 +1,96 @@
 package com.uet.fries.tmq.edoo.model;
 
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ItemUser {
+    private static final String TAG = ItemUser.class.getSimpleName();
+    private int id, pointCount;
+    private String name,
+            email,
+            code,
+            username,
+            birthday,
+            capability,
+            avatar,
+            regularClass,
+            description,
+            favorite;
 
-    private String avatar;
-    private String birthday;
-    private String capability;
-    private String code;
-    private String email;
-    private int id;
-    private String name;
-    private String regular_class;
-    private String username;
-
-    public String getAvatar() {
-        return avatar;
+    public ItemUser(JSONObject data){
+        try {
+            id = data.getInt("id");
+            pointCount = data.getInt("point_count");
+            name = data.getString("name");
+            email = data.getString("email");
+            code = data.getString("code");
+            username = data.getString("username");
+            birthday = data.getString("birthday");
+            capability = data.getString("capability");
+            avatar = data.getString("avatar");
+            regularClass = data.getString("regular_class");
+            description = data.getString("description");
+            favorite = data.getString("favorite");
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.i(TAG, "Get data Fail from JSONObject");
+        }
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public boolean isTeacher(){
+        return capability.equalsIgnoreCase("teacher");
     }
 
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getCapability() {
-        return capability;
-    }
-
-    public void setCapability(String capability) {
-        this.capability = capability;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    // ------------------------------------ Getter -------------------------------------------------
+    public int getPointCount() {
+        return pointCount;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getEmail() {
+        return email;
     }
 
-    public String getRegular_class() {
-        return regular_class;
+    public String getCode() {
+        return code;
     }
 
-    public void setRegular_class(String regular_class) {
-        this.regular_class = regular_class;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getRegularClass() {
+        return regularClass;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getFavorite() {
+        return favorite;
+    }
+
+    // --------------------------------------- Setter ----------------------------------------------
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setFavorite(String favorite) {
+        this.favorite = favorite;
     }
 }

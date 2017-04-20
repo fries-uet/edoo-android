@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -31,6 +32,8 @@ import com.uet.fries.tmq.edoo.rest.model.ItemClass;
 import com.uet.fries.tmq.edoo.rest.model.ItemResponse;
 import com.uet.fries.tmq.edoo.util.CommonVLs;
 
+import java.io.File;
+
 import butterknife.BindView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity
 
     private static final String URL_DOWNLOAD_APK = "https://edoo.vn/";
     private static final int REQUEST_CODE_EDIT = 1234;
+    public static final String PATH_TO_DIR_SAVING_IMAGE = Environment.getExternalStorageDirectory() + File.separator;
+
 
     private User user;
     private View header;
@@ -231,6 +236,8 @@ public class MainActivity extends AppCompatActivity
                 toolbar.setTitle("Thời khoá biểu");
                 break;
             case R.id.nav_updateAccount:
+                Intent mIntent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivityForResult(mIntent, REQUEST_CODE_EDIT);
                 break;
             case R.id.nav_logout:
                 logout();

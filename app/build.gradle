@@ -58,6 +58,8 @@ dependencies {
     compile 'com.daimajia.androidanimations:library:1.1.2@aar'
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
     compile 'com.nineoldandroids:library:2.4.0';
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
+
 }
 
 //Plugin for GreenDAO

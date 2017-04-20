@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="uet.fries.edoo.activities.ProfileActivity">
+
+    <!--<item-->
+        <!--android:id="@+id/action_edit_profile"-->
+        <!--android:icon="@drawable/ic_edit"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/txt_edit_profile"-->
+        <!--app:showAsAction="always" />-->
+
+    <item
+        android:id="@+id/action_change_avatar"
+        android:showAsAction="never"
+        android:title="@string/txt_edit_avatar"
+        tools:ignore="AppCompatResource" />
+
+    <!--<item android:title="Đổi ảnh bìa" />-->
+</menu>
