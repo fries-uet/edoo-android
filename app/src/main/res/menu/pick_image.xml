@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/action_pick_image_gallery"
+        android:showAsAction="never"
+        android:title="@string/txt_gallery"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/action_pick_image_camera"
+        android:showAsAction="never"
+        android:title="@string/txt_camera"
+        tools:ignore="AppCompatResource" />
+
+</menu>

@@ -196,7 +196,6 @@ public class TimelineActivity extends AppCompatActivity implements SwipeRefreshL
             public void onReceive(boolean error, JSONObject response, String message) throws JSONException {
                 if (!error) {
                     pbLoading.setVisibility(View.GONE);
-//                    Log.i(TAG, response.toString());
 
                     //lay jsonItem nhet vao item
                     JSONArray jsonPostArr = response.getJSONObject("data").getJSONArray("posts");
@@ -219,9 +218,6 @@ public class TimelineActivity extends AppCompatActivity implements SwipeRefreshL
                     JSONObject jsonPage = response.getJSONObject("data").getJSONObject("pagination");
                     int curPage = jsonPage.getInt("page");
                     int pageCount = jsonPage.getInt("pageCount");
-
-//                    Log.i(TAG, "curPage json: " + curPage);
-//                    Log.i(TAG, "page count json: " + pageCount);
 
                     isLoadable = curPage < pageCount;
                     TimelineActivity.this.itemPostArr = itemPostArr;
@@ -259,11 +255,11 @@ public class TimelineActivity extends AppCompatActivity implements SwipeRefreshL
     }
 
     public void startPostWriterActivity(String idClass) {
-//        Intent mIntent = new Intent();
-//        mIntent.putExtra("class_id", idClass);
-//        mIntent.setClass(TimelineActivity.this, PostWriterActivity.class);
-//
-//        startActivityForResult(mIntent, REQUEST_CODE_POST_WRITER);
+        Intent mIntent = new Intent();
+        mIntent.putExtra("class_id", idClass);
+        mIntent.setClass(TimelineActivity.this, PostWriterActivity.class);
+
+        startActivityForResult(mIntent, REQUEST_CODE_POST_WRITER);
     }
 
     @Override
@@ -283,15 +279,15 @@ public class TimelineActivity extends AppCompatActivity implements SwipeRefreshL
                     }
                 }
             }
-//            else if (resultCode == PostDetailActivity.RESULT_DELETE_COMPLETE) {
-//                refreshPosts();
-//            }
+            else if (resultCode == PostDetailActivity.RESULT_DELETE_COMPLETE) {
+                refreshPosts();
+            }
         }
 
         if (requestCode == REQUEST_CODE_POST_WRITER) {
             if (resultCode == RESULT_OK) {
                 refreshPosts();
-
+                // Todo Analytics
 //                new AnalyticsApp().sendEventWritePost(this);
             }
         }
@@ -309,15 +305,12 @@ public class TimelineActivity extends AppCompatActivity implements SwipeRefreshL
                 swipeRefresh.setRefreshing(false);
             }
 
-//            Log.i(TAG, "current page: " + currPage);
-
             mAdapter.setLoadable(isLoadable);
             if (msg.what == SUCCESS) {
                 if (currPage == 1) {
                     mAdapter.updateList(itemPostArr);
                 } else {
                     mAdapter.addItems(itemPostArr);
-//                    Log.i(TAG, "add items");
                 }
             }
 
