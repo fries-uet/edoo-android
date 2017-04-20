@@ -81,6 +81,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
+        <activity
+            android:name=".activity.IntroSliderActivity"
+            android:label="Introduction"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

@@ -84,7 +84,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (PrefManager.isFirstLoggedIn()) {
-            // Todo: First Login -> IntroActivity
+            Intent intro = new Intent(this, IntroSliderActivity.class);
+            startActivity(intro);
+            PrefManager.setIsFirstLogin(false);
         }
 
         DaoSession daoSession = ((AppController) getApplication()).getDaoSession();

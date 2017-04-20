@@ -133,7 +133,6 @@ public class TimetableFragment extends Fragment {
                     return;
                 }
                 List<ItemClass> list = response.body();
-                Toast.makeText(mContext, "size = " + list.size(), Toast.LENGTH_SHORT).show();
                 for (ItemClass itemClass : list) {
                     List<ItemLesson> lessons = itemClass.getLessons();
                     for (ItemLesson lesson : lessons) {
